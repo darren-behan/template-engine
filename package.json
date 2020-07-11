@@ -1,0 +1,29 @@
+{
+  "name": "template-engine",
+  "version": "1.0.0",
+  "description": "a Node CLI application that takes in information about employees and generates a HTML webpage that displays summaries for each person",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest --verbose test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/darren-behan/template-engine"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darren-behan/template-engine/issues"
+  },
+  "homepage": "https://github.com/darren-behan/template-engine",
+  "dependencies": {
+    "inquirer": "^6.3.1"
+  },
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
+}
