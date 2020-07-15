@@ -26,6 +26,14 @@ function promptUser() {
         "Manager",
         "Intern"
       ]
+    },
+    {
+      type: "input",
+      name: "github",
+      message: "What is your Github username?",
+      when: function(answers) {
+        return answers.role === "Engineer";
+      }
     }
   ]);
 }
