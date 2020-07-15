@@ -14,6 +14,34 @@ const render = require("./lib/htmlRenderer");
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
+// function to prompt the user with a series of questions to gather data for the file being created
+function promptUser() {
+  return inquirer.prompt([
+    {
+      type: "list",
+      name: "role",
+      message: "What is your current role?",
+      choices: [
+        "Engineer",
+        "Manager",
+        "Intern"
+      ]
+    }
+  ]);
+}
+
+async function init() {
+  try {
+    // init function pauses whilst gathering user data through the promptUser function and stores the data in "answers"
+    const answers = await promptUser();
+  } catch (err) {
+    // notifies the user if there was an error
+    console.log(err);
+  }
+}
+
+init();
+
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
