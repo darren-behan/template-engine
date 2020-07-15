@@ -60,7 +60,7 @@ function promptUser() {
     },
     {
       type: "input",
-      name: "phoneNumber",
+      name: "officePhoneNumber",
       message: "What is your office phone number?",
       when: function(answers) {
         return answers.role === "Manager";
@@ -73,6 +73,12 @@ async function init() {
   try {
     // init function pauses whilst gathering user data through the promptUser function and stores the data in "answers"
     const answers = await promptUser();
+
+    // `render` function will generate and return a block of HTML including templated divs for each employee
+    render(answers);
+
+    // notifies the user if successful
+    console.log("Successful");
   } catch (err) {
     // notifies the user if there was an error
     console.log(err);
