@@ -18,6 +18,21 @@ const render = require("./lib/htmlRenderer");
 function promptUser() {
   return inquirer.prompt([
     {
+      type: "input",
+      name: "name",
+      message: "What is your name?"
+    },
+    {
+      type: "input",
+      name: "id",
+      message: "What is your id?"
+    },
+    {
+      type: "input",
+      name: "email",
+      message: "What is your email?"
+    },
+    {
       type: "list",
       name: "role",
       message: "What is your current role?",
@@ -33,6 +48,22 @@ function promptUser() {
       message: "What is your Github username?",
       when: function(answers) {
         return answers.role === "Engineer";
+      }
+    },
+    {
+      type: "input",
+      name: "school",
+      message: "What school did you attend?",
+      when: function(answers) {
+        return answers.role === "Intern";
+      }
+    },
+    {
+      type: "input",
+      name: "phoneNumber",
+      message: "What is your office phone number?",
+      when: function(answers) {
+        return answers.role === "Manager";
       }
     }
   ]);
