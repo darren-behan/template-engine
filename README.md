@@ -29,7 +29,7 @@
 
 View live demo <a href="https://drive.google.com/file/d/10TWXtHeJLKdq1aYwhcRDBxuKnYrvw4DL/view">here</a>
 
-![Preview](./assets/images/sample-template-team-structure "Preview of README")
+![Preview](./assets/images/sample-template-team-structure.png "Preview of README")
 
 ## License
 
