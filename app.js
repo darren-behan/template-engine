@@ -4,6 +4,11 @@ const Intern = require("./lib/intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
+// util is used for node.js internal APIs
+const util = require("util");
+
+// function to write the file based on user data returning resolved if successful or reject if there was an error
+const writeFileAsync = util.promisify(fs.writeFile);
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
@@ -15,6 +20,21 @@ let numberOfEmployees = [];
 const employeeData = [];
 
 init();
+
+async function numberOfTeamMembers() {
+  await inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "team_total",
+        message: "How many members are in your team?",
+      },
+    ])
+    .then((response) => {
+      const number = response.team_total;
+      numberOfEmployees.push(number);
+    });
+}
 
 async function promptUser(number) {
   console.log("The first team member to add will be your Manager.");
@@ -166,29 +186,25 @@ async function promptUser(number) {
   }
 }
 
-async function numberOfTeamMembers() {
-  await inquirer
-    .prompt([
-      {
-        type: "input",
-        name: "team_total",
-        message: "How many members are in your team?",
-      },
-    ])
-    .then((response) => {
-      const number = response.team_total;
-      numberOfEmployees.push(number);
-    });
-}
-
 // function to prompt the user with a series of questions to gather data for the file being created
 async function init() {
   console.log("Let's build your team 🛠");
 
-  await numberOfTeamMembers();
-  const number = numberOfEmployees[0];
+  try {
+    await numberOfTeamMembers();
+    const number = numberOfEmployees[0];
 
-  await promptUser(number);
-  console.log(employeeData);
-  // render(employeeData);
+    await promptUser(number);
+    console.log(employeeData);
+    render(employeeData);
+
+    // function pauses whilst writing the file with the content from "readme"
+    await writeFileAsync(outputPath, render(employeeData));
+
+    // notifies the user if successful
+    console.log("Successfully wrote to README.md");
+  } catch (err) {
+    // notifies the user if there was an error
+    console.log(err);
+  }
 }
