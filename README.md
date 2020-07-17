@@ -6,7 +6,7 @@
 
 ## Description
 
-📚 A `Node CLI application` that takes in information about employees and generates a HTML webpage that displays summaries for each person
+📚 A `Node CLI application` that takes in information about employees and generates an HTML webpage that displays summaries for each employee
 
 ## Table of Contents 🗂
 
@@ -27,9 +27,9 @@
 
 🚨 run `node index.js` in the terminal, answer the prompts and a file called `blueprint.md` will generate containing the information required for your `README.md` file
 
-View live demo <a href="#">here</a>
+View live demo <a href="https://drive.google.com/file/d/10TWXtHeJLKdq1aYwhcRDBxuKnYrvw4DL/view">here</a>
 
-![Preview](./assets/images/10-OOP-homework-demo-1.png "Preview of README")
+![Preview](./assets/images/sample-template-team-structure "Preview of README")
 
 ## License
 
@@ -47,7 +47,7 @@ This app is not using a license
 
 ## Tests
 
-🧪 n/a
+🧪 run `npm run test` in the directory
 
 ## Questions
 
