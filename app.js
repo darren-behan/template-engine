@@ -19,8 +19,10 @@ const { listenerCount } = require("process");
 let numberOfEmployees = [];
 const employeeData = [];
 
+// Initializes the app
 init();
 
+// This prompt logs the number of team members which is used in a loop in the promptUser function for the user to add team members up to the amount specified
 async function numberOfTeamMembers() {
   await inquirer
     .prompt([
@@ -42,6 +44,7 @@ async function numberOfTeamMembers() {
     });
 }
 
+// This function prompts the user a series of questions to build their team
 async function promptUser(number) {
   console.log("The first team member to add will be your Manager.");
   await inquirer
@@ -264,19 +267,20 @@ async function promptUser(number) {
   }
 }
 
-// function to prompt the user with a series of questions to gather data for the file being created
+// Initializes the app
 async function init() {
   console.log("Let's build your team 🛠");
 
   try {
+    // Stores the number of team members required to build the team
     await numberOfTeamMembers();
     const number = numberOfEmployees[0];
 
+    // This function prompts the user a series of questions to build their team
     await promptUser(number);
     console.log(employeeData);
-    render(employeeData);
 
-    // function pauses whilst writing the file with the content from "readme"
+    // This function writes to the team.html file and passes the user inputs through render function
     await writeFileAsync(outputPath, render(employeeData));
 
     // notifies the user if successful
